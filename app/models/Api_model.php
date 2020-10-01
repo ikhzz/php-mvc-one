@@ -3,10 +3,10 @@
 class Api_model {
     // home : top_rated
 
-    public function test12() {
+    public function test12($page, $type) {
         // top_rated model 
         // animeee??????????????????????????
-        $json = "https://api.themoviedb.org/3/movie/top_rated?api_key=".API_KEY."&page=1&include_adult=false";
+        $json = "https://api.themoviedb.org/3/".$type."/top_rated?api_key=".API_KEY."&page=".$page."&include_adult=false";
         //var_dump($json);
         $jsonfile = file_get_contents($json);
         $jsonfile = json_decode($jsonfile);
