@@ -3,23 +3,39 @@
 class Api_model {
     // home : top_rated
 
-    public function test12($page, $type) {
-        // top_rated model 
-        // animeee??????????????????????????
-        $json = "https://api.themoviedb.org/3/".$type."/top_rated?api_key=".API_KEY."&page=".$page."&include_adult=false";
-        //var_dump($json);
-        $jsonfile = file_get_contents($json);
-        $jsonfile = json_decode($jsonfile);
+  public function topRated($page, $type) {
+    // top_rated model 
+    // animeee??????????????????????????
+    $json = "https://api.themoviedb.org/3/".$type."/top_rated?api_key=".API_KEY."&page=".$page."&include_adult=false";
+    //var_dump($json);
+    $jsonfile = file_get_contents($json);
+    $jsonfile = json_decode($jsonfile);
 
-        function objectToArray ($object) {
-            if(!is_object($object) && !is_array($object)){
-                return $object;
-            }
-            return array_map('objectToArray', (array) $object);
-        }
-
-        return objectToArray($jsonfile);
+    function objectToArray ($object) {
+      if(!is_object($object) && !is_array($object)){
+        return $object;
+      }
+      return array_map('objectToArray', (array) $object);
     }
+    return objectToArray($jsonfile);
+  }
+
+  public function upComing($page) {
+    // upcoming model 
+    $json = "https://api.themoviedb.org/3/movie/upcoming?api_key=".API_KEY."&page=".$page."&include_adult=false";
+    //var_dump($json);
+    $jsonfile = file_get_contents($json);
+    $jsonfile = json_decode($jsonfile);
+
+    function objectToArray ($object) {
+      if(!is_object($object) && !is_array($object)){
+        return $object;
+      }
+      return array_map('objectToArray', (array) $object);
+    }
+    return objectToArray($jsonfile);
+  }
+
     public function test() {
         //discover model
         //filter = sort.by look at documentation
@@ -201,20 +217,5 @@ class Api_model {
         return objectToArray($jsonfile);
     }
     
-    public function test13() {
-        // upcoming model 
-        $json = "https://api.themoviedb.org/3/movie/upcoming?api_key=".API_KEY."&page=2";
-        //var_dump($json);
-        $jsonfile = file_get_contents($json);
-        $jsonfile = json_decode($jsonfile);
-
-        function objectToArray ($object) {
-            if(!is_object($object) && !is_array($object)){
-                return $object;
-            }
-            return array_map('objectToArray', (array) $object);
-        }
-
-        return objectToArray($jsonfile);
-    }
+    
 }

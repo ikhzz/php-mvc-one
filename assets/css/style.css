@@ -92,7 +92,7 @@ select#page {
     background-color: rgb(82, 149, 255);
 }
 /* vote value */
-.percent {
+.percent, .lightPerc {
     position: relative;
     justify-self: left;
 }
@@ -103,13 +103,13 @@ select#page {
     left: 14px;
     font-size: 12px;
 }
-svg {
+.percent svg {
     width: 100px;
     height: 100px;
     position: absolute;
     top: -46px;
 }
-svg circle {
+.percent svg circle {
     width: 100%;
     height: 100%;
     fill: black;
@@ -118,14 +118,39 @@ svg circle {
     stroke-linecap: round;
     transform: translate(5px, 5px);
 }
-svg circle:nth-child(2) {
+.percent svg circle:nth-child(2) {
     stroke-dasharray: 107;
     /* stroke-dashoffset: calc(107 - (107 * 50) / 100) */
 }
 .percent svg circle:nth-child(2) {
     stroke: #00ff43;
 }
-
+/* percent box */
+.lightPerc svg {
+    width: 100px;
+    height: 100px;
+}
+.lightPerc svg circle {
+    width: 100%;
+    height: 100%;
+    stroke: black;
+    stroke-width: 7px;
+}
+.lightPerc svg circle:nth-child(2) {
+    stroke-dasharray: 255;
+    /* stroke-dashoffset: calc(255 - (255 * 50) / 100) */
+}
+.lightPerc svg circle:nth-child(2) {
+    stroke: #00ff43;
+}
+.lightPerc p {
+    color: white;
+    position: absolute;
+    top: 34px;
+    left: 35px;
+    font-size: 12px;
+    font-size: 25px;
+}
 /* lightbox  */
 
 .lightbox {
@@ -137,22 +162,70 @@ svg circle:nth-child(2) {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 1);
-    display: grid;
-    place-content: center;
-    animation: lightbox 1s forwards;
-    /* background-repeat: no-repeat;
-    background-position: center; */
+    display: none;
 }
-.lightportContent {
-    position: absolute;
-    opacity: 0.5;
-    width: 100%;
-    height: 80%;
-    background-repeat: no-repeat;
+.lightboxContent {
+    /* background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
-    top: 11%;
+    background-size: cover; */
+}
+.show {
     display: grid;
+}
+.lightback {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 90%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 5%;
+    opacity: 0.4;
+}
+.lightImg {
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+}
+.lightImg img {
+    width: 80%;
+    height: 70%;
+    border-radius: 10px;
+}
+.lightboxClose {
+    display: grid;
+    justify-self: right;
+    color: rgba(255, 255, 255, 1);
+}
+.lightboxContent {
+    display: grid;
+    grid-template-columns: 0px 1fr 2fr;
+    height: 720px;
+}
+.lightboxCaption {
+    color: white;
+    padding-right: 35px;
+    display: grid;
+    align-content: center;
+}
+.lightboxCaption *:not(:last-child) {
+    margin-bottom: 10px;
+}
+.lightboxClose::after {
+    content: 'x';
+    font-size: 20px;
+    margin-right: 10px;
+    color: red;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    display: grid;
+    justify-self: right;
+    cursor: pointer;
+    position: absolute;
 }
 @keyframes lightbox {
     0% {

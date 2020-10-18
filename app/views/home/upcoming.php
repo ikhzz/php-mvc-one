@@ -2,8 +2,8 @@
 
   <div class=contentHead>
 
-    <h2>Top Rated</h2>
-    <form action="<?=BASE_URL?>/home" method="post" id=movieSearch>
+    <h2>Up Coming</h2>
+    <form action="<?=BASE_URL?>/home/upcoming" method="post" id=movieSearch>
 
       <label for="page">Page :</label>
       <select name="page" id="page">
@@ -21,14 +21,6 @@
         <option value="9">9</option>
         <option value="10">10</option>
       </select>
-      <label for="type">Media Type :</label>
-      <select name="type" id="type">
-        <?php if((isset($data['type']))) : ?>
-          <option value="<?=$data['type']?>"><?=$data['type']?></option>
-        <?php endif;  ?>
-        <option value="movie">Movie</option>
-        <option value="tv">Tv</option>
-      </select> 
       <input type="submit" form=movieSearch name=movieSearch>
 
     </form>

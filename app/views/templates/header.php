@@ -10,11 +10,12 @@
     <main>
         <aside>
             <div class="logo">
-                <img src="<?=BASE_URL?>assets/img/tmdb.svg" alt="TheMovieDB">
+                <img src="<?=BASE_URL?>/assets/img/tmdb.svg" alt="TheMovieDB">
                 <!-- <h3>Title if you like</h3> -->
             </div>
             <ul class="nav">
-                <li ><a href="<?=BASE_URL?>"> Home</a></li>
+                <li ><a href="<?=BASE_URL?>">Home</a></li>
+                <li ><a href="<?=BASE_URL?>/home/upcoming">Upcoming</a></li>
             </ul>
             <div>
                 <p>&copy; 2020 by ikhzz </p>
